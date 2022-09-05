@@ -1,0 +1,17 @@
+{
+  "name": "far-speech",
+  "version": "1.0.0",
+  "description": "Garbles things into Far Speech",
+  "main": "FarSpeech.js",
+  "scripts": {
+    "far": "node FarSpeech.js"
+  },
+  "author": "Michael Greene",
+  "dependencies": {
+    "natural": "^5.2.3",
+    "rainbowvis.js": "^1.1.1",
+    "synonyms": "^1.0.1",
+    "yargs": "^17.5.1",
+    "zalgo-js": "^1.0.0"
+  }
+}
