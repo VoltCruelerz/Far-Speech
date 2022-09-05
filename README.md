@@ -1,4 +1,4 @@
-# Read Me
+# Far Speech
 
 This script will garble a provided message using either the intelligibility percentage provided or by dividing the receiver's intelligence by the sender's intelligence.
 
