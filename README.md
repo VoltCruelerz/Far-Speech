@@ -7,13 +7,13 @@ We garble the message in several ways:
 - reordering of words in message
 - word replacement with synonyms
 - letter replacement
-- zalgo
+- [zalgo](https://lingojam.com/ZalgoText)
 
 Additionally, we colorize the output text to represent sentiment analysis.
 
-- red: negative
-- purple: neutral
-- blue: positive
+- **red**: negative
+- **purple**: neutral
+- **blue**: positive
 
 ## Execution
 
