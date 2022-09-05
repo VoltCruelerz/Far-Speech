@@ -37,22 +37,22 @@ const hypercubeRandom = () => Math.random() * Math.random() * Math.random();
 const parseFlags = () => {
     try {
         // Handle comprehension percent.
-        percent = argv.p || argv.percent;
+        percent = parseFloat(argv.p || argv.percent || 0);
         if (!percent) {
-            const sender = argv.s || argv.sender;
-            const receiver = argv.r || argv.receiver;
-            if (!sender || !receiver) {
-                throw new Error('ERROR: Must provide both sender and receiver if not providing percent.')
+            const sender = parseInt(argv.s || argv.sender);
+            const receiver = parseInt(argv.r || argv.receiver);
+            if (sender && receiver) {
+                percent = receiver / sender;
+            } else {
+                console.log('No sender/receiver. Defaulting to 0.');
             }
-            percent = Math.min(1, Math.round(1000 * receiver / sender) / 1000);
         }
 
         // It's possible the user could enter the percent as "50" instead of ".5", but we'd obviously know what they meant, so just parse it.
         if (percent > 1 && percent <= 100) {
             percent /= 100;
-        } else if ((!percent && percent !== 0) || percent > 100 || percent < 0) {
-            throw new Error('Unrecognized percent: ' + percent);
         }
+        percent = Math.min(1, percent);
 
         // Handle message
         const message = argv.m || argv.message;
@@ -140,7 +140,7 @@ const garbleMessage = async (message) => {
 
     // Reorder the words
     for (let i = 0; i < message.length; i++) {
-        const doShift = squareRandom() > percent;
+        const doShift = Math.random() > percent;
         if (doShift) {
             arrayMove(message, i, getRandomInt(message.length));
         }
@@ -158,7 +158,7 @@ const garbleMessage = async (message) => {
     console.log('\n\n');
 
     // Add in the overview content
-    const comprehension = `<a style="color:white"><b>Comprehension:</b> ${percent*100}%</a>&nbsp;`;
+    const comprehension = `<a style="color:white"><b>Comprehension:</b> ${Math.round(percent*1000) / 10}%</a>&nbsp;`;
     const psychic = `<a style="color:white"><b>Psychic Damage:</b> ${garbleCount.count}/${message.length}</a>&nbsp;`;
 
     // Merge and return for output.

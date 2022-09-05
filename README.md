@@ -22,7 +22,17 @@ Additionally, we colorize the output text to represent sentiment analysis.
 
 ### Flags
 
-- `--s`: sender intelligence (required if using receiver)
-- `--r`: receiver intelligence (required if using sender)
-- `--p`: percentage (required if not using send/receive)
-- `--m`: message (required)
+| Flag  | Verbose Flag   | Description | Required |
+|:-----:|:---------------|:------------|:---------|
+| `--s` | `--sender`     | sender intelligence | required if not using `--p` |
+| `--r` | `--receiver`   | receiver intelligence | required if not using `--p` |
+| `--p` | `--percentage` | comprehension percent | required if not using `--s` and `--r` |
+| `--m` | `--message`    | message to garble | required |
+
+## Examples
+
+[see here](examples/examples.md)
+
+## License
+
+[EPL 2.0](license.md)
